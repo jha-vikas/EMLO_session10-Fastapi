@@ -4,7 +4,7 @@ WORKDIR /workspace
 
 COPY ./requirements.txt .
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 COPY ./vit/vit_server.py ./vit/cifar_model_script.pt ./vit/cifar10_classes.txt /workspace/
 

@@ -2,7 +2,7 @@ import requests
 import logging
 import time
 
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "http://127.0.0.1:8080"
 url = f"{BASE_URL}/infer"
 
 logging.basicConfig(filename='gpt/gpt_log.txt', level=logging.INFO)
