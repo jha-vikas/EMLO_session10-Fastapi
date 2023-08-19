@@ -1,0 +1,11 @@
+FROM python:3.10
+
+WORKDIR /workspace
+
+COPY ./requirements.txt .
+
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+COPY ./vit/vit_server.py ./gpt/gpt_model_script.pt /workspace/
+
+CMD ["gunicorn", "gpt_server:app", "--workers", "2", "--worker-class", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8080"]

@@ -1,0 +1,25 @@
+version: '1.0'
+services:
+  demo_gpt:
+    build:
+      context: .
+      dockerfile: gpt/Dockerfile.gpt
+    image: gpt-fastapi:latest
+    container_name: gpt-fastapi-demo
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    command: gunicorn gpt_server:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8080
+
+  demo_vit:
+    build:
+      context: .
+      dockerfile: vit/Dockerfile.vit
+    image: vit-fastapi:latest
+    container_name: vit-fastapi-demo
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    command: gunicorn vit_server:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:8080

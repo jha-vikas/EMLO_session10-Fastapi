@@ -1,4 +1,4 @@
-from typing import Tuple, Annotated
+from typing import Annotated
 from PIL import Image
 import io
 
@@ -46,7 +46,7 @@ predict_transform = T.Compose(
                     )
 
 
-@app.get("infer")
+@app.post("/infer")
 async def infer(image: Annotated[bytes, File()]):
     img: Image.Image = Image.open(io.BytesIO(image))
     image = predict_transform(img)
